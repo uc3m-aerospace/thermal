@@ -49,7 +49,7 @@ area(model.nodes.n,model.nodes.n) = 0; % Auxiliary variable. Contact area for ea
 
 length(model.nodes.n,model.nodes.n) = 0; % Auxiliary variable. Contact length for each pair of nodes. Upper triangular matrix [m]
 
-model.conduction.conductance = (conductivity+conductivity').*(area+area')./(length+length'+eye(model.nodes.n)); % Conductance matrix [W/K]
+model.conduction.conductance = (conductivity+conductivity').*(area+area')./(length+length'+eye(model.nodes.n)); % Conductance matrix. This is a very crude estimation of the conductances. Correct as needed [W/K]
 
 %% Radiative links
 areaproducts(model.nodes.n,model.nodes.n) = 0; % Auxiliary variable. Product of effective radiative area of each pair of nodes. Upper triangular matrix [m^4]

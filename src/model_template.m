@@ -62,7 +62,7 @@ length(1,2) = 0.01;
 length(1,3) = 0.01;
 length(2,3) = 0.01;
 
-model.conduction.conductance = (conductivity+conductivity').*(area+area')./(length+length'+eye(model.nodes.n)); % Conductance matrix [W/K]
+model.conduction.conductance = (conductivity+conductivity').*(area+area')./(length+length'+eye(model.nodes.n)); % Conductance matrix. This is a very crude estimation of the conductances. Correct as needed [W/K]
 
 %% Radiative links
 areaproducts(model.nodes.n,model.nodes.n) = 0; % Auxiliary variable. Product of effective radiative area of each pair of nodes. Upper triangular matrix [m^4]

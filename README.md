@@ -1,6 +1,6 @@
 # Thermal
 
-[![DOI](https://zenodo.org/badge/134246471.svg)](https://zenodo.org/badge/latestdoi/134246471)
+[![DOI](https://zenodo.org/badge/256158417.svg)](https://zenodo.org/badge/latestdoi/256158417)
 
 > A simple code for approximate thermal mathematical modeling and simulation.
 
