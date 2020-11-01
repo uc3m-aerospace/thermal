@@ -1,11 +1,10 @@
 %{
-# Thermal scenario set up function.
+# Thermal load scenario set up helper function.
 
 OUTPUT:
 
 This function returns a structure with 
-
-* initial temperature of each node
+ 
 * internal dissipation of each node
 * solar irradiation on each node
 * albedo irradiation on each node
@@ -13,7 +12,10 @@ This function returns a structure with
 
 All units are SI units.
 
-This function can be used as a template when creating new scenarios.
+This function can be used as a template when creating new thermal load scenarios.
+Each scenario function has an associated model function.
+Since thethermal load scenario structure is just that (a structure), it can
+be created by other means than with this scenario function.
 
 Mario Merino <mario.merino@uc3m.es>, 2020
 %}
@@ -24,17 +26,6 @@ scenario.info.name = 'Template'; % name
 scenario.info.date = '20200415'; % date
 scenario.info.description = 'Just a template scenario file. Copy and modify this file'; % description
 
-%% Nodes 
-scenario.nodes.n = 3; % Number of nodes. Must be consistent with the following
-
-%% Initial condition
-scenario.ic = ... % Initial condition for the temperature of each node [K]
-[
-    300
-    300
-    300
-];
-
 %% Internal dissipation
 scenario.Qi = ... % Power dissipated in each node [W]
 [
@@ -44,7 +35,7 @@ scenario.Qi = ... % Power dissipated in each node [W]
 ];
 
 %% Solar irradiation
-scenario.Qsun = ... % Solar irradiation [W]
+scenario.Qsun = ... % Solar irradiation (solar irradiance * exposed area) [W]
 1366* ...
 [
     0.5
@@ -53,7 +44,7 @@ scenario.Qsun = ... % Solar irradiation [W]
 ];
 
 %% Albedo irradiation
-scenario.Qalbedo = ... % Solar irradiation [W]
+scenario.Qalbedo = ... % Solar albedo irradiation (solar albedo irradiance * exposed area) [W]
 0.3*1366*0.1* ...
 [
     0.25
@@ -62,7 +53,7 @@ scenario.Qalbedo = ... % Solar irradiation [W]
 ];
 
 %% planetary IR irradiation
-scenario.Qplanetary = ... % Solar irradiation [W]
+scenario.Qplanetary = ... % Planetary irradiation (planetary IR irradiance * exposed area) [W]
 237*(6371/8000)^2* ...
 [
     0.25

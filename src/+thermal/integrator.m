@@ -7,7 +7,8 @@ temperature of each node for each time step.
 INPUTS:
 
 * model: structure with the thermal mathematical model parameters
-* scenario: structure with the thermal scenario parameters
+* scenario: structure with the thermal load scenario parameters
+* ic: vector with initial temperature of the nodes
 * (other parameters): other parameters will be directly passed to the ode45
   integrator
 
@@ -20,7 +21,7 @@ All units are SI units.
 
 Mario Merino <mario.merino@uc3m.es>, 2020
 %}
-function [t,T] = integrator(model,scenario,tspan,options)
+function [t,T] = integrator(model,scenario,ic,tspan,options)
 
 % Prepare ode45 options, if none provided
 if ~exist('options','var')
@@ -28,6 +29,6 @@ if ~exist('options','var')
 end
 
 % Integration
-[t,T] = ode45(@(t,T)thermal.dT_dt(t,T,model,scenario),tspan,scenario.ic,options);
+[t,T] = ode45(@(t,T)thermal.dT_dt(t,T,model,scenario),tspan,ic,options);
 
 

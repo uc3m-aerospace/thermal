@@ -5,7 +5,6 @@ OUTPUT:
 
 This function returns a structure with 
 
-* initial temperature of each node
 * internal dissipation of each node
 * solar irradiation on each node
 * albedo irradiation on each node
@@ -19,20 +18,10 @@ Mario Merino <mario.merino@uc3m.es>, 2020
 %}
 function scenario = scenario1
 
-
 %% Scenario name, description, date
 scenario.info.name = 'One node'; % name
 scenario.info.date = '20200415'; % date
 scenario.info.description = 'A dumb example with one node only'; % description
-
-%% Nodes 
-scenario.nodes.n = 1; % Number of nodes. Must be consistent with the following
-
-%% Initial condition
-scenario.ic = ... % Initial condition for the temperature of each node [K]
-[
-    300 
-];
 
 %% Internal dissipation
 scenario.Qi = ... % Power dissipated in each node [W]

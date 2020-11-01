@@ -23,8 +23,9 @@ function test_sphere(testcase)
     
     model = test_sphere.model1;
     scenario = test_sphere.scenario1;
+    ic = test_sphere.ic1;
     
-    [~,T] = thermal.integrator(model,scenario,[0,10000]);
+    [~,T] = thermal.integrator(model,scenario,ic,[0,10000]);
     
     sigma = 5.67e-8; % Stefan-Boltzmann constant [W/(m^2*K^4)]
     reference_solution = (1366/4/sigma * model.radiation.Asun/model.radiation.Espace)^(1/4);
